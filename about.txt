@@ -8,6 +8,7 @@ v1.13.7
 you can support me at my youtube: https://youtube.com/@sqec
 
 Upcoming Features:
+- candied apples
 - pudding/cream
 - extract tool
 - cinnamon
