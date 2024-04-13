@@ -1,9 +1,5 @@
-/*
-elements.test = {
-    //other needed properties
-    cutInto: "elem"
-}
-*/
+// created by SquareScreamYT
+// https://github.com/SquareScreamYT/aChefsDream.js
 
 console.log("Thanks for using aChefsDream.js! -sqec")
 
