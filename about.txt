@@ -3,7 +3,7 @@ Thanks to RealerRaddler <@914371295561535508>, Alice <@697799964985786450>, nous
 Compatibility with plants.js coming soon
 Works well with community_desserts.js
 
-v1.13.7
+v1.13.9
 
 you can support me at my youtube: https://youtube.com/@sqec
 
@@ -458,3 +458,9 @@ Changelog (v1.13.5)
 
 Changelog (v1.13.7)
     - rename nut to peanut
+
+
+
+
+Changelog (v1.13.9)
+	- fixed beef statehigh
