@@ -18,7 +18,6 @@ Upcoming Features:
 - more chocolate, cocoa powder, white chocolate, cocoa butter
 - pigs, ham and bacon
 - garlic
-- stainless steel
 - pepper plants
 - hot chocolate
 - celery
@@ -462,8 +461,8 @@ Changelog (v1.13.7)
 
 
 Changelog (v1.13.9)
-	- fixed beef statehigh
-	- added spring onion seeds
-	- added sping onion leaves
-	- added chopped spring onions
-
+    - fixed beef statehigh
+    - added spring onion seeds
+    - added sping onion leaves
+    - added chopped spring onions
+    - added stainless steel
