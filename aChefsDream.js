@@ -7469,3 +7469,15 @@ elements.spring_onion_seed = {
         "XX|M1|XX",
     ],
 }
+if(!elements.molten_steel.reactions) {elements.molten_steel.reactions = {}}
+elements.molten_steel.reactions.molten_nickel = {elem1:"molten_stainless_steel"}
+
+elements.stainless_steel ={
+    color: "#71797e",
+    behavior: behaviors.WALL,
+    tempHigh: 1455.5,
+    category: "solids",
+    density: 7850,
+    conduct: 0.42,
+    hardness: 0.8
+}
