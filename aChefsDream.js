@@ -38,25 +38,28 @@ elements.knife = {
         if(cutInto instanceof Array) { cutInto = cutInto[Math.floor(Math.random() * cutInto.length)] };
         //change pixel into the (chosen) element      
         //changePixel(pixel, cutInto)
-
-        //var cutIntoEmit = elements[pixel.element].cutIntoEmit;
-        //if (!cutIntoEmit) { return };
-        //if(cutIntoEmit instanceof Array) { cutIntoEmit = cutIntoEmit[Math.floor(Math.random() * cutIntoEmit.length)] };
-        //var thiselement = pixel.element;
         if (shiftDown) {
             if (Math.random() < 0.5) {
                 changePixel(pixel, cutInto)
-                //if (elements[thiselement].cutIntoEmit && Math.random() < 0.5 && isEmpty(pixel.x,pixel.y-1)) {
-                //    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
-                //}
+                var cutIntoEmit = elements[pixel.element].cutIntoEmit;
+                if (!cutIntoEmit) { return };
+                if(cutIntoEmit instanceof Array) { cutIntoEmit = cutIntoEmit[Math.floor(Math.random() * cutIntoEmit.length)] };
+                var thiselement = pixel.element;
+                if (elements[thiselement].cutIntoEmit && Math.random() < 0.7 && isEmpty(pixel.x,pixel.y-1)) {
+                    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
+                }
             }
         }
         else if (!shiftDown) {
             if (Math.random() < 0.1) {
                 changePixel(pixel, cutInto)
-                //if (elements[thiselement].cutIntoEmit && Math.random() < 0.5 && isEmpty(pixel.x,pixel.y-1)) {
-                //    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
-                //}
+                var cutIntoEmit = elements[pixel.element].cutIntoEmit;
+                if (!cutIntoEmit) { return };
+                if(cutIntoEmit instanceof Array) { cutIntoEmit = cutIntoEmit[Math.floor(Math.random() * cutIntoEmit.length)] };
+                var thiselement = pixel.element;
+                if (elements[thiselement].cutIntoEmit && Math.random() < 0.4 && isEmpty(pixel.x,pixel.y-1)) {
+                    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
+                }
             }
         }
     },
@@ -4823,7 +4826,7 @@ elements.onion = {
     density: 1050,
     cutInto: "cut_onion",
     breakInto:"onion_powder",
-    //cutIntoEmit: "stench",
+    cutIntoEmit: "stench",
 }
 elements.cut_onion = {
     color: "#dcc5ed",
@@ -7303,8 +7306,8 @@ elements.raw_beef = {
     state: "solid",
     burnInto: "steak",
     temp:25,
-    tempHigh: 600,
-    stateHigh: ["steak"],
+    tempHigh: 200,
+    stateHigh: "steak",
     reactions: {
         "smoke": {elem1: "smoked_beef"},
         "charcoal": {elem1: "barbecued_beef", tempMin: 70},
