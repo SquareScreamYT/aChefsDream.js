@@ -378,7 +378,7 @@ elements.soup = {
     isFood: true,
     //thanks to nouser
     onMix: function(soup,ingredient) {
-        if (elements[ingredient.element].id !== elements.soup.id && elements[ingredient.element].id !== elements.broth.id) {
+        if (elements[ingredient.element].id !== elements.soup.id && elements[ingredient.element].id !== elements.broth.id && ingredient.temp > 40) {
             if (elements[ingredient.element].isFood || elements[ingredient.element].category === "food" || elements[ingredient.element].category === "liquids") {
                 var rgb1 = soup.color.match(/\d+/g);
                 var rgb2 = ingredient.color.match(/\d+/g);
@@ -4879,8 +4879,8 @@ elements.onion_seed = {
                     createPixel("onion",pixel.x+1,pixel.y);
                     createPixel("onion",pixel.x-1,pixel.y);
                     if (isEmpty(pixel.x+1,pixel.y-3) && isEmpty(pixel.x-1,pixel.y-3)) {
-                        createPixel("plant",pixel.x-1,pixel.y-3);
-                        createPixel("plant",pixel.x+1,pixel.y-3);
+                        createPixel("spring_onion_leaves",pixel.x+1,pixel.y-3);
+                        createPixel("spring_onion_leaves",pixel.x-1,pixel.y-3);
                         changePixel(pixel,"onion");
                     }
                 }
@@ -7373,3 +7373,104 @@ elements.jelly.temp = 0
 elements.nut.name = "peanut";
 elements.nut_meat.name = "peanut_meat";
 elements.nut_butter.name = "peanut_butter";
+
+elements.spring_onion_leaves = {
+    color: "#519c2f",
+    behavior: [
+        "XX|XX|XX",
+        "XX|XX|XX",
+        "ST:onion|M1|ST:onion",
+    ],
+    reactions: {
+        "vinegar": { elem1:"dead_plant", elem2:null, chance:0.035 },
+        "baking_soda": { elem1:"dead_plant", elem2:null, chance:0.01 },
+        "bleach": { elem1:"dead_plant", elem2:null, chance:0.05 },
+        "alcohol": { elem1:"dead_plant", elem2:null, chance:0.035 }
+    },
+    category:"food",
+    tempHigh: 100,
+    stateHigh: "dead_plant",
+    burn:65,
+    burnTime:60,
+    burnInto: "dead_plant",
+    breakInto: "herb",
+    state: "solid",
+    density: 1050,
+    cutInto: "chopped_spring_onions",
+}
+elements.chopped_spring_onion = {
+    color: ["#0f9912","#227d23"],
+    behavior: behaviors.POWDER,
+    category:"food",
+    tempHigh: 100,
+    stateHigh: "dead_plant",
+    burn:65,
+    burnTime:60,
+    burnInto: "dead_plant",
+    state: "solid",
+    density: 1050,
+    breakInto:"herb",
+    cutInto: "chopped_spring_onions",
+}
+
+
+elements.spring_onion_seed = {
+    color: "#1a0e02",
+    tick: function(pixel) {
+        if (isEmpty(pixel.x,pixel.y+1)) {
+            movePixel(pixel,pixel.x,pixel.y+1);
+        }
+        else {
+            if (Math.random() < 0.2 && pixel.age > 50 && pixel.temp < 100) {
+                if (!outOfBounds(pixel.x,pixel.y+1)) {
+                    var dirtPixel = pixelMap[pixel.x][pixel.y+1];
+                    if (dirtPixel.element === "dirt" || dirtPixel.element === "mud" || dirtPixel.element === "sand" || dirtPixel.element === "wet_sand" || dirtPixel.element === "clay_soil" || dirtPixel.element === "mycelium") {
+                        changePixel(dirtPixel,"root");
+                    }
+                }
+                if (isEmpty(pixel.x,pixel.y-2) && isEmpty(pixel.x,pixel.y-1) && isEmpty(pixel.x+1,pixel.y-1) && isEmpty(pixel.x-1,pixel.y-1) && isEmpty(pixel.x+1,pixel.y) && isEmpty(pixel.x-1,pixel.y)) {
+                    createPixel("onion",pixel.x,pixel.y-1);
+                    createPixel("onion",pixel.x+1,pixel.y-1);
+                    createPixel("onion",pixel.x-1,pixel.y-1);
+                    createPixel("onion",pixel.x,pixel.y-2);
+                    createPixel("onion",pixel.x+1,pixel.y);
+                    createPixel("onion",pixel.x-1,pixel.y);
+                    if (isEmpty(pixel.x+1,pixel.y-3) && isEmpty(pixel.x-1,pixel.y-3)) {
+                        createPixel("spring_onion_leaves",pixel.x+1,pixel.y-3);
+                        createPixel("spring_onion_leaves",pixel.x-1,pixel.y-3);
+                        if (isEmpty(pixel.x+1,pixel.y-4) && isEmpty(pixel.x-1,pixel.y-4)) {
+                            createPixel("spring_onion_leaves",pixel.x+1,pixel.y-4);
+                            createPixel("spring_onion_leaves",pixel.x-1,pixel.y-4);
+                            if (isEmpty(pixel.x+1,pixel.y-5) && isEmpty(pixel.x-1,pixel.y-5)) {
+                                createPixel("spring_onion_leaves",pixel.x+1,pixel.y-5);
+                                createPixel("spring_onion_leaves",pixel.x-1,pixel.y-5);
+                            }
+                        }
+                        changePixel(pixel,"onion");
+                    }
+                }
+            }
+            pixel.age++;
+        }
+        doDefaults(pixel);
+    },
+    properties: {
+        "age":0
+    },
+    tempHigh: 100,
+    stateHigh: "dead_plant",
+    tempLow: -2,
+    stateLow: "frozen_plant",
+    burn: 65,
+    burnTime: 15,
+    category: "life",
+    state: "solid",
+    density: 1500,
+    cooldown: defaultCooldown,
+    seed: true,
+    behavior: [
+        "XX|XX|XX",
+        "XX|XX|XX",
+        "XX|M1|XX",
+    ],
+}
