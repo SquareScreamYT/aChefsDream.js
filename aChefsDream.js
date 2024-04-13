@@ -7392,7 +7392,7 @@ elements.spring_onion_leaves = {
     breakInto: "herb",
     state: "solid",
     density: 1050,
-    cutInto: "chopped_spring_onions",
+    cutInto: "chopped_spring_onion",
 }
 elements.chopped_spring_onion = {
     color: ["#0f9912","#227d23"],
@@ -7406,7 +7406,6 @@ elements.chopped_spring_onion = {
     state: "solid",
     density: 1050,
     breakInto:"herb",
-    cutInto: "chopped_spring_onions",
 }
 
 
