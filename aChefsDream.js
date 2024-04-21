@@ -117,6 +117,29 @@ elements.freeze_dry = {
     desc: "Use on pixels to freeze dry them, if possible."
 }
 
+elements.food_paint = {
+    color: ["#c27070","#c29c70","#c2c270","#70c270","#70c2c2","#7070c2","#c270c2"],
+    tool: function(pixel) {
+        if (elements[pixel.element].isFood = true) {
+            if (!shiftDown) {
+                pixel.color = pixelColorPick(pixel,currentColor)
+            }
+            else {
+                var rgb = currentColor.replace("#","").match(/.{1,2}/g);
+                for (var i = 0; i < rgb.length; i++) {
+                    rgb[i] = parseInt(rgb[i],16);
+                }
+                pixel.color = "rgb(" + rgb.join(",") + ")"
+            }
+            delete pixel.origColor;
+        }
+    },
+    customColor: true,
+    category: "tools",
+    canPlace: false,
+    desc: "Use on edible pixels to change color."
+}
+
 elements.eat = {
     color: ["#ffba79","#efff79"],
     tool: function(pixel) {
@@ -416,7 +439,7 @@ elements.soup = {
 }
 
 if (!elements.broth.reactions) elements.broth.reactions = {};
-elements.broth.reactions.water = { elem1: "soup", elem2: "soup" }
+elements.broth.reactions.water = { elem1: "soup", elem2: "soup", tempMin: 70 }
 
 elements.noodles = {
     desc: "whatever noodles",
@@ -7469,15 +7492,13 @@ elements.spring_onion_seed = {
         "XX|M1|XX",
     ],
 }
-if(!elements.molten_steel.reactions) {elements.molten_steel.reactions = {}}
-elements.molten_steel.reactions.molten_nickel = {elem1:"molten_stainless_steel"}
 
 elements.stainless_steel ={
-    color: "#71797e",
+    color: "#91999e",
     behavior: behaviors.WALL,
     tempHigh: 1455.5,
     category: "solids",
     density: 7850,
     conduct: 0.42,
     hardness: 0.8
-}
+} 
