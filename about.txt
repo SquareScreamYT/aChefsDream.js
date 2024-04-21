@@ -466,3 +466,4 @@ Changelog (v1.13.9)
     - added sping onion leaves
     - added chopped spring onions
     - added stainless steel
+    - added food paint
