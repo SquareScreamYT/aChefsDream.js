@@ -120,7 +120,7 @@ elements.freeze_dry = {
 elements.food_paint = {
     color: ["#c27070","#c29c70","#c2c270","#70c270","#70c2c2","#7070c2","#c270c2"],
     tool: function(pixel) {
-        if (elements[pixel.element].isFood = true) {
+        if (elements[pixel.element].isFood == true) {
             if (!shiftDown) {
                 pixel.color = pixelColorPick(pixel,currentColor)
             }
