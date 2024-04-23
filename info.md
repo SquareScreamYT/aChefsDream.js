@@ -1,25 +1,42 @@
+# A Chef's Dream
+
+A Chef's Dream is a Sandboxels mod started by RealerRaddler and continued by SquareScreamYT. It adds many foods to Sandboxels. Use mod aChefsDream.js to add to your Sandboxels :D
+
+# Info
+
 Created by SquareScreamYT/sqec <@918475812884344852>
 Thanks to RealerRaddler <@914371295561535508>, Alice <@697799964985786450>, nousernamefound <@316383921346707468>, Adora the Transfem <@778753696804765696>, ryan(R74n) <@101070932608561152> and Fioushemastor <@738828785482203189> for helping :)
 Compatibility with plants.js coming soon
 Works well with community_desserts.js
 
-v1.13.9
+# v1.13.9
 
 you can support me at my youtube: https://youtube.com/@sqec
 
-Upcoming Features:
+# Upcoming Features
+
+## High Priority
+
 - candied apples
 - pudding/cream
 - extract tool
 - cinnamon
-- white rice noodles
 - matcha leaves, powder, tea
 - cacao pods
 - more chocolate, cocoa powder, white chocolate, cocoa butter
 - pigs, ham and bacon
-- garlic
-- pepper plants
-- hot chocolate
+- crabs (they eat coconuts)
+- squids
+- tofu
+- miso
+- juice reaction with other juices
+- jackfruit
+- fruit soda (any juice + co2 or seltzer)
+- rambutan
+- shrimp/prawn meat
+
+## Low Priority
+
 - celery
 - kiwis
 - guavas
@@ -30,26 +47,23 @@ Upcoming Features:
 - figs
 - avocados
 - apricots and almonds (roasted)
-- hazelnuts
 - plums
 - curry/chicken tikka masala
 - raisins
 - peaches
 - cucumbers
 - eggplants
-- crabs (they eat coconuts)
-- squids
-- tofu
-- miso
-- juice reaction with other juices
-- jackfruit
-- fruit soda (any juice + co2 or seltzer)
-- rambutan
-- shrimp/prawn meat
+- garlic
+- pepper plants
+- hot chocolate
+- hazelnuts
 - sheep, goats, mutton, wool/fabric, filter
-- filter (like in nousersthing.js)
+- filter (like in nousersthings.js)
+- white rice noodles
 
-Changelog (v1.0)
+# Changelog
+
+## v1.0
     - added chickens
         - lays chicken eggs
     - added chicks
@@ -96,7 +110,8 @@ Changelog (v1.0)
 
 
 
-Changelog (v1.1)
+## v1.1
+
     - added apples and related stuff
         - apples
         - applewood
@@ -126,7 +141,7 @@ Changelog (v1.1)
 
 
 
-Changelog (v1.2)
+## v1.2
     - added boilers
     - added steamers
     - added smokers
@@ -175,7 +190,8 @@ Changelog (v1.2)
 
 
 
-Changelog (v1.3)
+## v1.3
+
     - added shrimp
     - added coconuts
         - added coconut stems
@@ -205,12 +221,14 @@ Changelog (v1.3)
 
 
 
-Changelog (v1.3.1)
+## v1.3.1
+
     - added lemonade
 
 
 
-Changelog (v1.3.2)
+## v1.3.2
+
     - added apple cider vinegar
     - added turnips
     - added turnip seeds and leaves
@@ -218,7 +236,8 @@ Changelog (v1.3.2)
 
 
 
-Changelog (v1.4)
+## v1.4
+
     - added baking powder
     - added corn starch
     - added maple syrup
@@ -240,7 +259,7 @@ Changelog (v1.4)
 
 
 
-Changelog (v1.5)
+## v1.5
     - added blueberries
         - added blueberries
         - added blueberry seeds, stem, and leaves
@@ -255,7 +274,7 @@ Changelog (v1.5)
 
 
 
-Changelog (v1.6)
+## v1.6
     - added freeze and warm tool
     - added olive seeds
     - juice mixing functionality
@@ -271,7 +290,8 @@ Changelog (v1.6)
 
 
 
-Changelog (v1.7)
+## v1.7
+
     - added chocolate chips
     - added sprinkles
     - added banana milk (yellow fruit milk)
@@ -285,7 +305,8 @@ Changelog (v1.7)
 
 
 
-Changelog (v1.8)
+## v1.8 
+
     - added lime and lime juice
     - added lime zest and slices
     - added escargot
@@ -297,7 +318,8 @@ Changelog (v1.8)
 
 
 
-Changelog (v1.9)
+## v1.9
+
     - added onion
     - added cut onion
     - added fried onion
@@ -315,7 +337,8 @@ Changelog (v1.9)
 
 
 
-Changelog (v1.10)
+## v1.10
+
     - tweaked seaweed behavior
     - tweaked tomato and grape vines
     - added peppermint
@@ -330,7 +353,8 @@ Changelog (v1.10)
 
 
 
-Changelog (v1.10.1)
+## v1.10.1
+
     - unhid vanilla essence
     - added peppermint candy
     - vanilla essence can now turn ice cream light yellow
@@ -341,13 +365,14 @@ Changelog (v1.10.1)
 
 
 
-Changelog (v1.10.2)
-    - added sprinkle explosions
+## v1.10.2
+    - added sprinkle bombs
 
 
 
 
-Changelog (v1.10.5)
+## v1.10.5
+
     - added chilli
     - added chilli seed, stem and leaves
     - added chilli powder
@@ -356,13 +381,15 @@ Changelog (v1.10.5)
 
 
 
-Changelog (v1.10.7)
+## v1.10.7
+
     - added mango milk
 
 
 
 
-Changelog (v1.10.8)
+## v1.10.8
+
     - added onion powder
     - fix carrot plant bug
     - added fried rice
@@ -373,14 +400,16 @@ Changelog (v1.10.8)
 
 
 
-Changelog (v1.11)
+## v1.11
+
     - unhid carrot
     - unhid turnip
 
 
 
 
-Changelog (v1.12)
+## v1.12
+
     - added whisk
     - added egg white
     - added hard egg white
@@ -396,20 +425,23 @@ Changelog (v1.12)
 
 
 
-Changelog (v1.12.1)
+## v1.12.1
+
 	- removed coral, can still be found in ocean.js
  	- updated food coloring
 
 
 
 
-Changelog (v1.12.2)
+## v1.12.2
+
     - updated cooked meat behavior
 
 
 
 
-Changelog (v1.12.4)
+## v1.12.4
+
     - added cake batter
     - added condensed milk
     - added wasabi
@@ -421,7 +453,8 @@ Changelog (v1.12.4)
 
 
 
-Changelog (v1.13)
+## v1.13
+
     - added cracker and cracker dough
     - added barbecue sauce
     - added mustard
@@ -445,7 +478,8 @@ Changelog (v1.13)
 
 
 
-Changelog (v1.13.5)
+## v1.13.5
+
     - added hard jelly
     - soda can mix colors
     - added soda jelly
@@ -454,13 +488,14 @@ Changelog (v1.13.5)
 
 
 
-Changelog (v1.13.7)
+## v1.13.7
+
     - rename nut to peanut
 
 
 
 
-Changelog (v1.13.9)
+## v1.13.9
     - fixed beef statehigh
     - added spring onion seeds
     - added sping onion leaves
