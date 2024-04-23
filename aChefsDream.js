@@ -1,7 +1,9 @@
 // created by SquareScreamYT
 // https://github.com/SquareScreamYT/aChefsDream.js
 
-console.log("Thanks for using aChefsDream.js! -sqec")
+runAfterLoad(function() {
+    console.log("Thanks for using aChefsDream.js! -sqec")
+})
 
 function interpolateRgb(rgb1, rgb2, ratio) {
     const interpolatedRgb = {
@@ -7502,3 +7504,33 @@ elements.stainless_steel ={
     conduct: 0.42,
     hardness: 0.8
 } 
+
+// things to mix: juice, water, seltzer, sugar water, soda, juice, milk, cream,
+// juice, milk, chocolate milk, fruit milk, eggnog, nut milk, alcohol, wine, tea,
+// tea, coffee, honey, caramel, vanilla essence, peppermint tea, sugar, yogurt, 
+// whipped cream, chocolate, jam
+
+// juice mixing
+for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
+    for (let juicej = 0; juicej < eLists.JUICEMIXABLE.length; juicej++) {
+        elemi = eLists.JUICEMIXABLE[juicei];
+        elemj = eLists.JUICEMIXABLE[juicej];
+        if (elemi != elemj) {
+            if (!elements[elemi].reactions) { elements[elemi].reactions = {} }
+            elements[elemi].reactions[elemj] = { func: function(pixel1, pixel2){
+                let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.5);
+                changePixel(pixel1,"juice")
+                pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+                pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+                // console.log("juice mixed")
+            }}
+        }
+    }
+    if (!elements[elemi].reactions) { elements[elemi].reactions = {} }
+    elements[elemi].reactions.water = { func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.5);
+        changePixel(pixel1,"juice")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
+}
