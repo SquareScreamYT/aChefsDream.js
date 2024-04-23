@@ -502,3 +502,4 @@ you can support me at my youtube: https://youtube.com/@sqec
     - added chopped spring onions
     - added stainless steel
     - added food paint
+    - added juice mixing colors
