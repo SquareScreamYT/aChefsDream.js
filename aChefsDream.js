@@ -7512,12 +7512,13 @@ elements.stainless_steel ={
 
 // juice mixing
 for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
+    // juice with juice
     for (let juicej = 0; juicej < eLists.JUICEMIXABLE.length; juicej++) {
-        elemi = eLists.JUICEMIXABLE[juicei];
-        elemj = eLists.JUICEMIXABLE[juicej];
-        if (elemi != elemj) {
-            if (!elements[elemi].reactions) { elements[elemi].reactions = {} }
-            elements[elemi].reactions[elemj] = { func: function(pixel1, pixel2){
+        elem = eLists.JUICEMIXABLE[juicei];
+        elem2 = eLists.JUICEMIXABLE[juicej];
+        if (elem != elem2) {
+            if (!elements[elem].reactions) { elements[elem].reactions = {} }
+            elements[elem].reactions[elem2] = { func: function(pixel1, pixel2){
                 let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.5);
                 changePixel(pixel1,"juice")
                 pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
@@ -7526,10 +7527,24 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
             }}
         }
     }
-    if (!elements[elemi].reactions) { elements[elemi].reactions = {} }
-    elements[elemi].reactions.water = { func: function(pixel1, pixel2){
-        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.5);
+    // juice with water
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.water = { func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB("rgb(255,255,255)"), 0.2);
+        if (((newrgb.r + newrgb.g + newrgb.b) / 3) > 215) {
+            newrgb = getRGB(pixel1.color);
+        }
         changePixel(pixel1,"juice")
+        changePixel(pixel2,"juice")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
+    // juice with milk
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.milk = { func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
         pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
         pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
     }}
