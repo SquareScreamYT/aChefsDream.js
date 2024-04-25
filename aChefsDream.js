@@ -7548,4 +7548,21 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
         pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
         pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
     }}
+    // juice with fruit milk
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.fruit_milk = { func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
 }
+// fruit milk with milk
+elements.fruit_milk.reactions.milk = { func: function(pixel1, pixel2){
+let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+    changePixel(pixel1,"fruit_milk")
+    changePixel(pixel2,"fruit_milk")
+    pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+}}
