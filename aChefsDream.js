@@ -7517,7 +7517,7 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
         elem = eLists.JUICEMIXABLE[juicei];
         elem2 = eLists.JUICEMIXABLE[juicej];
         if (elem != elem2) {
-            if (!elements[elem].reactions) { elements[elem].reactions = {} }
+            if (!elements[elem].reactions) { chance:1, elements[elem].reactions = {} }
             elements[elem].reactions[elem2] = { func: function(pixel1, pixel2){
                 let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.5);
                 changePixel(pixel1,"juice")
@@ -7529,7 +7529,7 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
     }
     // juice with water
     if (!elements[elem].reactions) { elements[elem].reactions = {} }
-    elements[elem].reactions.water = { func: function(pixel1, pixel2){
+    elements[elem].reactions.water = { chance:1, func: function(pixel1, pixel2){
         let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB("rgb(255,255,255)"), 0.2);
         if (((newrgb.r + newrgb.g + newrgb.b) / 3) > 215) {
             newrgb = getRGB(pixel1.color);
@@ -7541,7 +7541,34 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
     }}
     // juice with milk
     if (!elements[elem].reactions) { elements[elem].reactions = {} }
-    elements[elem].reactions.milk = { func: function(pixel1, pixel2){
+    elements[elem].reactions.milk = { chance:1, func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
+    // juice with coconut milk
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.coconut_milk = { chance:1, func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
+    // juice with nut milk
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.nut_milk = { chance:1, func: function(pixel1, pixel2){
+        let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }}
+    // juice with cream
+    if (!elements[elem].reactions) { elements[elem].reactions = {} }
+    elements[elem].reactions.cream = { chance:1, func: function(pixel1, pixel2){
         let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
         changePixel(pixel1,"fruit_milk")
         changePixel(pixel2,"fruit_milk")
@@ -7550,7 +7577,7 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
     }}
     // juice with fruit milk
     if (!elements[elem].reactions) { elements[elem].reactions = {} }
-    elements[elem].reactions.fruit_milk = { func: function(pixel1, pixel2){
+    elements[elem].reactions.fruit_milk = { chance:1, func: function(pixel1, pixel2){
         let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
         changePixel(pixel1,"fruit_milk")
         changePixel(pixel2,"fruit_milk")
@@ -7559,10 +7586,75 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
     }}
 }
 // fruit milk with milk
-elements.fruit_milk.reactions.milk = { func: function(pixel1, pixel2){
-let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
-    changePixel(pixel1,"fruit_milk")
-    changePixel(pixel2,"fruit_milk")
-    pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
-    pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
-}}
+elements.fruit_milk.reactions.milk = { chance:1, func: function(pixel1, pixel2){
+    let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        if (((newrgb.r + newrgb.g + newrgb.b) / 3) < 230) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        } else if (Math.random() < 0.05) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        }
+    }
+}
+// fruit milk with nut milk
+elements.fruit_milk.reactions.nut_milk = { chance:1, func: function(pixel1, pixel2){
+    let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        if (((newrgb.r + newrgb.g + newrgb.b) / 3) < 230) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        } else if (Math.random() < 0.05) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        }
+    }
+}
+// fruit milk with coconut milk
+elements.fruit_milk.reactions.coconut_milk = { chance:1, func: function(pixel1, pixel2){
+    let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        if (((newrgb.r + newrgb.g + newrgb.b) / 3) < 230) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        } else if (Math.random() < 0.05) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        }
+    }
+}
+// fruit milk with cream
+elements.fruit_milk.reactions.cream = { chance:1, func: function(pixel1, pixel2){
+    let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        if (((newrgb.r + newrgb.g + newrgb.b) / 3) < 230) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        } else if (Math.random() < 0.05) {
+            changePixel(pixel1,"fruit_milk")
+            changePixel(pixel2,"fruit_milk")
+            pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+            pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        }
+    }
+}
+// fruit milk with fruit milk
+elements.fruit_milk.reactions.fruit_milk = { chance:1, func: function(pixel1, pixel2){
+    let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
+        changePixel(pixel1,"fruit_milk")
+        changePixel(pixel2,"fruit_milk")
+        pixel1.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+    }
+}
