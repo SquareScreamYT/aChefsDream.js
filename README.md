@@ -501,4 +501,4 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added stainless steel
 - added food paint
 - added juice mixing colors
-- added fruit milk mixing with juice and milk
+- added fruit milk mixing with juice and milk variants
