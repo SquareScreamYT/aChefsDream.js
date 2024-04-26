@@ -1375,6 +1375,16 @@ elements.tuna = {
     category: "life",
     state: "solid",
     cutInto: "raw_tuna",
+    conduct: 0.2,
+    eggColor: ["#211316","#2C1A1D","#503734"],
+    breakInto: "blood",
+    burn:20,
+    burnTime:200,
+    temp: 20,
+    tempHigh: 120,
+    stateHigh: "cooked_tuna",
+    tempLow: -20,
+    stateLow: "frozen_fish",
     reactions: {
         "algae": { elem2:null, chance:0.25, func:behaviors.FEEDPIXEL },
         "plant": { elem2:null, chance:0.125, func:behaviors.FEEDPIXEL },
@@ -1411,6 +1421,16 @@ elements.salmon = {
     ],
     category: "life",
     state: "solid",
+    conduct: 0.2,
+    eggColor: ["#e8961c","#faa82d"],
+    breakInto: "blood",
+    burn:20,
+    burnTime:200,
+    temp: 20,
+    tempHigh: 120,
+    stateHigh: "cooked_salmon",
+    tempLow: -20,
+    stateLow: "frozen_fish",
     reactions: {
         "algae": { elem2:null, chance:0.25, func:behaviors.FEEDPIXEL },
         "plant": { elem2:null, chance:0.125, func:behaviors.FEEDPIXEL },
@@ -1837,12 +1857,22 @@ elements.wine = {
 elements.shrimp = {
     color: ["#EE5422", "#E9683C", "#F3583F", "#EDA270"],
     behavior: [
-        "SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14|M2%7.5 AND SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%5|SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14",
+        "SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14|M2%7.5|SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14",
         "SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14|FX%20|SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14",
-        "M2 AND SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%15|M1|M2 AND SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%15",
+        "M2 AND SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14|M1|M2 AND SW:water,salt_water,sugar_water,dirty_water,seltzer,pool_water,primordial_soup%14",
     ],
     category: "life",
     state: "solid",
+    cutInto: "raw_shrimp",
+    conduct: 0.2,
+    breakInto: "raw_shrimp",
+    burn:20,
+    burnTime:200,
+    temp: 20,
+    tempHigh: 120,
+    stateHigh: "cooked_shrimp",
+    tempLow: -20,
+    stateLow: "frozen_meat",
     reactions: {
         "algae": { elem2:null, chance:0.25, func:behaviors.FEEDPIXEL },
         "plant": { elem2:null, chance:0.125, func:behaviors.FEEDPIXEL },
@@ -7660,6 +7690,123 @@ elements.rambutan_seed = {
         "XX|M1|XX",
     ],
 };
+
+elements.barbecued_shrimp = {
+    color:["#bf743b", "#b57026","#8f5e29","#a87b11"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp:55,
+    tempHigh: 600,
+    stateHigh: ["ash","smoke"],
+    isFood: true,
+    hidden: true,
+}
+elements.steamed_shrimp = {
+    color:["#e8dab2", "#e2cea6"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp:50,
+    tempHigh: 600,
+    stateHigh: ["ash","smoke"],
+    isFood: true,
+    hidden: true,
+}
+elements.smoked_shrimp = {
+    color:["#78542e", "#6b4b26"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp:55,
+    tempHigh: 600,
+    stateHigh: ["ash","smoke"],
+    isFood: true,
+    hidden: true,
+}
+elements.cooked_shrimp = {
+    color:["#ff7f50", "#ffa07a", "#ffb3a7"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp: 40,
+    tempHigh: 600,
+    stateHigh: ["ash", "smoke"],
+    hidden: true,
+};
+
+elements.raw_shrimp = {
+    color: ["#f0e0d6", "#e8d9ce", "#cdb7b5"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    burnInto: "cooked_shrimp",
+    temp:25,
+    tempHigh: 600,
+    stateHigh: "cooked_shrimp",
+    reactions: {
+        "batter": { elem1: "battered_shrimp", elem2: null },
+        "smoke": {elem1: "smoked_shrimp"},
+        "steam": {elem1: "steamed_shrimp"},
+        "water": {elem1: "boiled_shrimp", tempMin: 70},
+        "nut_oil": {elem1: "fried_shrimp", tempMin: 70},
+        "charcoal": {elem1: "barbecued_shrimp", tempMin: 70},
+        "fire": {elem1: "barbecued_shrimp"}
+    }
+};
+
+elements.boiled_shrimp = {
+    color: ["#ffd180", "#ffc978", "#ffbe70"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    isFood: true,
+    temp: 65,
+    tempHigh: 600,
+    stateHigh: ["ash", "smoke"],
+    hidden: true,
+}
+
+elements.fried_shrimp = {
+    color: ["#ff8c00", "#ff7f00", "#ff7f00"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    isFood: true,
+    temp: 90,
+    tempHigh: 600,
+    stateHigh: ["ash", "smoke"],
+    hidden: true,
+}
+elements.battered_shrimp = {
+    color: ["#f2e7d5", "#eae0cd"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp:25,
+    tempHigh: 125,
+    stateHigh: "cooked_shrimp",
+    reactions: {
+        "crumb": { color1: "#123456", elem2: null },
+        "nut_oil": {elem1: "tempura", tempMin: 60}
+    },
+    hidden: true,
+};
+elements.tempura = {
+    color: ["#ff8c00", "#ff8c00", "#ffab00", "#ffab00"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    temp: 40,
+    tempHigh: 600,
+    stateHigh: ["ash", "smoke"],
+    tempLow: -20,
+    breakInto: "crumb",
+    isFood: true,
+    density: 100,
+    hidden: true,
+};
+
 
 // things to mix: juice, water, seltzer, sugar water, soda, juice, milk, cream,
 // juice, milk, chocolate milk, fruit milk, eggnog, nut milk, alcohol, wine, tea,
