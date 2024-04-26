@@ -7795,6 +7795,39 @@ elements.tempura = {
     hidden: true,
 };
 
+elements.grape.stateHigh = "raisin"
+elements.grape.tempHigh = 65
+
+elements.raisin = {
+    color: ["#522D68","#3B194D","#381845","2B194D"],
+    behavior: [
+        "XX|ST:vine|XX",
+        "ST:vine|XX|ST:vine",
+        "M2|M1|M2",
+    ],
+    reactions: {
+        "radiation": { elem1:"explosion", chance:0.1, color1:"#291824" },
+        "rock": { elem1:"juice", chance:0.1, color1:"#291824" },
+        "concrete": { elem1:"juice", chance:0.1, color1:"#291824" },
+        "basalt": { elem1:"juice", chance:0.1, color1:"#291824" },
+        "limestone": { elem1:"juice", chance:0.1, color1:"#291824" },
+        "tuff": { elem1:"juice", chance:0.1, color1:"#291824" },
+        "water": { elem2:"juice", chance:0.005, color2:"#291824" },
+        "sugar_water": { elem2:"juice", chance:0.025, color2:"#291824" },
+        "acid": { elem1:"juice", color1:"#291824" },
+        "acid_gas": { elem1:"juice", color1:"#291824" },
+    },
+    innerColor: "#cc7492",
+    tempHigh: 256,
+    stateHigh: ["steam","sugar"],
+    category: "food",
+    state: "solid",
+    density: 1154,
+    breakInto: "juice",
+    breakIntoColor: "#291824",
+    ignoreAir: true,
+    isFood: true
+}
 
 // things to mix: juice, water, seltzer, sugar water, soda, juice, milk, cream,
 // juice, milk, chocolate milk, fruit milk, eggnog, nut milk, alcohol, wine, tea,
