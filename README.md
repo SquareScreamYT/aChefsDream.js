@@ -505,3 +505,13 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added rambutans and unripe rambutans
 - added cut rambutans
 - added rambutan seed, wood, leaves and branches
+- improved chicken meat variants
+- added tuna and salmon egg colors
+- added raw and cooked shrimp
+- added fried shrimp
+- added boiled shrimp
+- added barbecued shrimp
+- added smoked shrimp
+- added steamed shrimp
+- added battered shrimp
+- added tempura
