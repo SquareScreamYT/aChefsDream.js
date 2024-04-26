@@ -502,3 +502,6 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added food paint
 - added juice mixing colors
 - added fruit milk mixing with juice and milk variants
+- added rambutans and unripe rambutans
+- added cut rambutans
+- added rambutan seed, wood, leaves and branches
