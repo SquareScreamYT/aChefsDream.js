@@ -30,8 +30,6 @@ you can support me at my youtube: https://youtube.com/@sqec
 - juice reaction with other juices
 - jackfruit
 - fruit soda (any juice + co2 or seltzer)
-- rambutan
-- shrimp/prawn meat
 
 ## Low Priority
 
