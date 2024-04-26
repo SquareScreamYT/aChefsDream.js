@@ -3,6 +3,7 @@
 
 runAfterLoad(function() {
     console.log("Thanks for using aChefsDream.js! -sqec")
+    console.log("aChefsDream is hosted at https://github.com/SquareScreamYT/aChefsDream.js")
 })
 
 function interpolateRgb(rgb1, rgb2, ratio) {
@@ -2777,7 +2778,7 @@ elements.maple_syrup = {
     behavior: behaviors.LIQUID,
     tempHigh: 170,
     stateHigh: ["sugar","smoke","smoke"],
-    tempLow: 0,
+    tempLow: -15,
     category:"liquids",
     state: "liquid",
     viscosity: 15,
@@ -7504,6 +7505,161 @@ elements.stainless_steel ={
     conduct: 0.42,
     hardness: 0.8
 } 
+
+elements.rambutan_wood = {
+    color: "#635418",
+    behavior: behaviors.WALL,
+    tempHigh: 400,
+    stateHigh: ["ember","charcoal","fire","fire","fire"],
+    category: "solids",
+    burn: 5,
+    burnTime: 300,
+    burnInto: ["ember","charcoal","fire"],
+    state: "solid",
+    hardness: 0.15,
+    breakInto: "sawdust",
+    breakIntoColor: ["#dba66e","#cc8a64"],
+    hidden: true
+}
+elements.rambutan_branch = {
+    color: "#635418",
+    behavior: [
+        "CR:rambutan_leaves,rambutan_branch%2|CR:rambutan_leaves,rambutan_branch%2|CR:rambutan_leaves,rambutan_branch%2",
+        "XX|XX|XX",
+        "XX|XX|XX",
+    ],
+    tempHigh: 100,
+    stateHigh: "rambutan_wood",
+    tempLow: -30,
+    stateLow: "rambutan_wood",
+    category: "life",
+    burn: 40,
+    burnTime: 50,
+    burnInto: ["sap","ember","charcoal"],
+    hidden: true,
+    state: "solid",
+    density: 1500,
+    hardness: 0.15,
+    breakInto: ["sap","sawdust"],
+}
+elements.rambutan_leaves = {
+    color: "#6fa611",
+    behavior: [
+        "XX|XX|XX",
+        "XX|XX|XX",
+        "XX|CR:unripe_rambutan%0.1|XX",
+    ],
+    reactions: {
+        "vinegar": { elem1:"dead_plant", elem2:null, chance:0.035 },
+        "baking_soda": { elem1:"dead_plant", elem2:null, chance:0.01 },
+        "bleach": { elem1:"dead_plant", elem2:null, chance:0.05 },
+        "alcohol": { elem1:"dead_plant", elem2:null, chance:0.035 }
+    },
+    category:"life",
+    tempHigh: 100,
+    stateHigh: "dead_plant",
+    tempLow: -1.66,
+    stateLow: "frozen_plant",
+    burn:65,
+    burnTime:60,
+    burnInto: "dead_plant",
+    breakInto: "dead_plant",
+    state: "solid",
+    density: 1050,
+    hidden: true
+}
+elements.unripe_rambutan = {
+    color: ["#87c718","#8ac91c","#94de1d"],
+    behavior: [
+        "XX|ST:rambutan_leaves|XX",
+        "XX|CH:rambutan%1|XX",
+        "M2|M1|M2",
+    ],
+    category:"food",
+    tempHigh: 100,
+    stateHigh: ["dead_plant","steam"],
+    burn:65,
+    burnTime:60,
+    cutInto: "cut_rambutan",
+    state: "solid",
+    density: 1050,
+}
+
+elements.rambutan = {
+    color: ["#d64242","#f23333","#cc3737","#b1db69"],
+    behavior: behaviors.POWDER,
+    category:"food",
+    tempHigh: 100,
+    stateHigh: ["sugar","steam"],
+    burn:65,
+    burnTime:60,
+    state: "solid",
+    density: 1050,
+    cutInto: "cut_rambutan",
+    hidden: true,
+}
+
+elements.cut_rambutan = {
+    color: "#f5f1bf",
+    behavior: behaviors.STURDYPOWDER,
+    category:"food",
+    tempHigh: 100,
+    stateHigh: ["sugar","steam"],
+    burn:65,
+    burnTime:60,
+    state: "solid",
+    density: 1050,
+    hidden: true,
+    freezeDryInto: "freeze_dried_fruits",
+    freezeDryIntoColor: "#a19f3b",
+}
+
+elements.rambutan_seed = {
+    color: "#2b1807",
+    tick: function(pixel) {
+        if (isEmpty(pixel.x,pixel.y+1)) {
+            movePixel(pixel,pixel.x,pixel.y+1);
+        }
+        else {
+            if (Math.random() < 0.02 && pixel.age > 50 && pixel.temp < 100) {
+                if (!outOfBounds(pixel.x,pixel.y+1)) {
+                    var dirtPixel = pixelMap[pixel.x][pixel.y+1];
+                    if (dirtPixel.element === "dirt" || dirtPixel.element === "mud" || dirtPixel.element === "sand" || dirtPixel.element === "wet_sand" || dirtPixel.element === "clay_soil" || dirtPixel.element === "mycelium") {
+                        changePixel(dirtPixel,"root");
+                    }
+                }
+                if (isEmpty(pixel.x,pixel.y-1)) {
+                    movePixel(pixel,pixel.x,pixel.y-1);
+                    createPixel(Math.random() > 0.5 ? "rambutan_wood" : "rambutan_branch",pixel.x,pixel.y+1);
+                }
+            }
+            else if (pixel.age > 1000) {
+                changePixel(pixel,"rambutan_wood");
+            }
+            pixel.age++;
+        }
+        doDefaults(pixel);
+    },
+    properties: {
+        "age":0
+    },
+    tempHigh: 100,
+    stateHigh: "dead_plant",
+    tempLow: -2,
+    stateLow: "frozen_plant",
+    burn: 65,
+    burnTime: 15,
+    category: "life",
+    state: "solid",
+    density: 1500,
+    cooldown: defaultCooldown,
+    seed: true,
+    behavior: [
+        "XX|XX|XX",
+        "XX|FX%10|XX",
+        "XX|M1|XX",
+    ],
+};
 
 // things to mix: juice, water, seltzer, sugar water, soda, juice, milk, cream,
 // juice, milk, chocolate milk, fruit milk, eggnog, nut milk, alcohol, wine, tea,
