@@ -7766,18 +7766,6 @@ elements.boiled_shrimp = {
     stateHigh: ["ash", "smoke"],
     hidden: true,
 }
-
-elements.fried_shrimp = {
-    color: ["#ff8c00", "#ff7f00", "#ff7f00"],
-    behavior: behaviors.STURDYPOWDER,
-    category: "food",
-    state: "solid",
-    isFood: true,
-    temp: 90,
-    tempHigh: 600,
-    stateHigh: ["ash", "smoke"],
-    hidden: true,
-}
 elements.battered_shrimp = {
     color: ["#f2e7d5", "#eae0cd"],
     behavior: behaviors.STURDYPOWDER,
