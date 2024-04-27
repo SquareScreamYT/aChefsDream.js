@@ -15,6 +15,7 @@ you can support me at my youtube: https://youtube.com/@sqec
 
 ## High Priority
 
+- soup main ingredient using hoverStat
 - candied apples
 - pudding/cream
 - extract tool
