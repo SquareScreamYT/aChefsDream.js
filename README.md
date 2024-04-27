@@ -15,6 +15,7 @@ you can support me at my youtube: https://youtube.com/@sqec
 
 ## High Priority
 
+- spices
 - candied apples
 - pudding/cream
 - extract tool
