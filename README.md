@@ -15,7 +15,6 @@ you can support me at my youtube: https://youtube.com/@sqec
 
 ## High Priority
 
-- soup main ingredient using hoverStat
 - candied apples
 - pudding/cream
 - extract tool
@@ -519,3 +518,4 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added fruit slush
 - added rambutan juice
 - added durian juice
+- updated soup with a ingredient stat
