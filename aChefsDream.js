@@ -7949,9 +7949,9 @@ elements.fruit_slush = {
 
 // juice mixing
 for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
+    elem = eLists.JUICEMIXABLE[juicei];
     // juice with juice
     for (let juicej = 0; juicej < eLists.JUICEMIXABLE.length; juicej++) {
-        elem = eLists.JUICEMIXABLE[juicei];
         elem2 = eLists.JUICEMIXABLE[juicej];
         if (elem != elem2) {
             if (!elements[elem].reactions) { chance:1, elements[elem].reactions = {} }
@@ -8108,3 +8108,25 @@ elements.fruit_milk.reactions.fruit_milk = { chance:1, func: function(pixel1, pi
         pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
     }
 }
+// fruit milk onMix
+elements.fruit_milk.onMix = function(pixel){
+    let num = Math.floor(Math.random() * 4);
+    let x = pixel.x + adjacentCoords[num][0];
+    let y = pixel.y + adjacentCoords[num][1];
+    if(!isEmpty(x,y) && !outOfBounds(x,y)){
+      let pixel2 = pixelMap[x][y];
+      if(pixel.color != pixel2.color && pixel2.element == "fruit_milk"){
+        let condition;
+        if(shiftDown == 0){
+          condition = (Math.floor(Math.random() * 2) == 1); 
+        } else {
+          condition = true; 
+        }
+        if(condition){
+          let newrgb = interpolateRgb(getRGB(pixel.color), getRGB(pixel2.color), 0.5);
+          pixel.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+          pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
+        }
+      }
+    }
+  }
