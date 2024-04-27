@@ -28,7 +28,6 @@ you can support me at my youtube: https://youtube.com/@sqec
 - squids
 - tofu
 - miso
-- juice reaction with other juices
 - jackfruit
 - fruit soda (any juice + co2 or seltzer)
 
@@ -492,6 +491,7 @@ you can support me at my youtube: https://youtube.com/@sqec
 
 
 ## v1.13.9
+
 - fixed beef statehigh
 - added spring onion seeds
 - added sping onion leaves
@@ -510,3 +510,12 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added battered shrimp
 - added tempura
 - added raisins
+
+
+
+
+## v1.14
+
+- added fruit slush
+- added rambutan juice
+- added durian juice
