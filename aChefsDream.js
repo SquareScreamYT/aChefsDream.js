@@ -18,7 +18,6 @@ function getRGB(rgb){
     let rgb2 = rgb.replace(")", "").replace("rgb(", "").replace(/,/g, "r").split("r")
     return { r: parseInt(rgb2[0]), g: parseInt(rgb2[1]), b: parseInt(rgb2[2]) };
 }
-
 behaviors.STURDYPOWDER2 = [
     "XX|XX|XX",
     "XX|XX|XX",
@@ -39,25 +38,21 @@ elements.knife = {
         //changePixel(pixel, cutInto)
         if (shiftDown) {
             if (Math.random() < 0.5) {
-                changePixel(pixel, cutInto)
-                var cutIntoEmit = elements[pixel.element].cutIntoEmit;
-                if (!cutIntoEmit) { return };
-                if(cutIntoEmit instanceof Array) { cutIntoEmit = cutIntoEmit[Math.floor(Math.random() * cutIntoEmit.length)] };
                 var thiselement = pixel.element;
-                if (elements[thiselement].cutIntoEmit && Math.random() < 0.7 && isEmpty(pixel.x,pixel.y-1)) {
-                    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
+                changePixel(pixel, cutInto)
+                pixelTempCheck(pixel);
+                if (elements[thiselement].cutIntoColor) {
+                    pixel.color = pixelColorPick(pixel, elements[thiselement].cutIntoColor);
                 }
             }
         }
         else if (!shiftDown) {
             if (Math.random() < 0.1) {
-                changePixel(pixel, cutInto)
-                var cutIntoEmit = elements[pixel.element].cutIntoEmit;
-                if (!cutIntoEmit) { return };
-                if(cutIntoEmit instanceof Array) { cutIntoEmit = cutIntoEmit[Math.floor(Math.random() * cutIntoEmit.length)] };
                 var thiselement = pixel.element;
-                if (elements[thiselement].cutIntoEmit && Math.random() < 0.4 && isEmpty(pixel.x,pixel.y-1)) {
-                    createPixel(elements[thiselement].cutIntoEmit,pixel.x,pixel.y-1);
+                changePixel(pixel, cutInto)
+                pixelTempCheck(pixel);
+                if (elements[thiselement].cutIntoColor) {
+                    pixel.color = pixelColorPick(pixel, elements[thiselement].cutIntoColor);
                 }
             }
         }
@@ -6586,6 +6581,7 @@ elements.durian = {
     cutInto: "cut_durian",
     state: "solid",
     density: 1050,
+    breakInto: "durian_juice"
 }
 
 elements.cut_durian = {
@@ -6601,6 +6597,7 @@ elements.cut_durian = {
     hidden: true,
     freezeDryInto: "freeze_dried_fruits",
     freezeDryIntoColor: "#a19f3b",
+    breakInto: "durian_juice"
 }
 
 elements.durian_seed = {
@@ -6649,6 +6646,32 @@ elements.durian_seed = {
         "XX|M1|XX",
     ],
 };
+
+elements.durian_juice = {
+    color: "#ebe06e",
+    onMix: function(pixel) {
+        if (shiftDown) {
+            if (Math.random() < 0.2) {
+                changePixel(pixel,"juice")
+                pixel.color = pixelColorPick(pixel,"#ebe06e")
+            }
+        }
+    },
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    tempHigh: 100,
+    stateHigh: ["steam","sugar"],
+    burn: 70,
+    burnTime: 300,
+    burnInto: ["steam", "smoke"],
+    state: "liquid",
+    density: 825,
+    hidden: true,
+    temp: 30,
+    hidden: true,
+    tempLow: 0,
+};
+eLists.JUICEMIXABLE.push("durian_juice");
 elements.egg_white = {
     color: "#edece8",
     behavior: behaviors.LIQUID,
@@ -7613,6 +7636,7 @@ elements.unripe_rambutan = {
     cutInto: "cut_rambutan",
     state: "solid",
     density: 1050,
+    breakInto: "rambutan_juice"
 }
 
 elements.rambutan = {
@@ -7626,7 +7650,7 @@ elements.rambutan = {
     state: "solid",
     density: 1050,
     cutInto: "cut_rambutan",
-    hidden: true,
+    breakInto: "rambutan_juice"
 }
 
 elements.cut_rambutan = {
@@ -7642,6 +7666,7 @@ elements.cut_rambutan = {
     hidden: true,
     freezeDryInto: "freeze_dried_fruits",
     freezeDryIntoColor: "#a19f3b",
+    breakInto: "rambutan_juice"
 }
 
 elements.rambutan_seed = {
@@ -7690,6 +7715,32 @@ elements.rambutan_seed = {
         "XX|M1|XX",
     ],
 };
+
+elements.rambutan_juice = {
+    color: "#f7f4cb",
+    onMix: function(pixel) {
+        if (shiftDown) {
+            if (Math.random() < 0.2) {
+                changePixel(pixel,"juice")
+                pixel.color = pixelColorPick(pixel,"#f7f4cb")
+            }
+        }
+    },
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    tempHigh: 100,
+    stateHigh: ["steam","sugar"],
+    burn: 70,
+    burnTime: 300,
+    burnInto: ["steam", "smoke"],
+    state: "liquid",
+    density: 825,
+    hidden: true,
+    temp: 30,
+    hidden: true,
+    tempLow: 0,
+};
+eLists.JUICEMIXABLE.push("rambutan_juice");
 
 elements.barbecued_shrimp = {
     color:["#bf743b", "#b57026","#8f5e29","#a87b11"],
@@ -7829,6 +7880,26 @@ elements.raisin = {
     isFood: true
 }
 
+elements.fruit_slush = {
+    color: "#ed93a4",
+    behavior: behaviors.LIQUID,
+    reactions: {
+        "dirt": { elem1: null, elem2: "mud" },
+        "sand": { elem1: null, elem2: "wet_sand" },
+        "uranium": { elem1:"dirty_water", chance:0.25 },
+    },
+    temp: -5,
+    tempHigh: 18,
+    tempLow: -20,
+    stateLow: "juice_ice",
+    stateHigh: "juice",
+    category: "food",
+    state: "liquid",
+    density: 95,
+    viscosity: 100,
+    hidden: true
+}
+
 // things to mix: juice, water, seltzer, sugar water, soda, juice, milk, cream,
 // juice, milk, chocolate milk, fruit milk, eggnog, nut milk, alcohol, wine, tea,
 // tea, coffee, honey, caramel, vanilla essence, peppermint tea, sugar, yogurt, 
@@ -7909,6 +7980,19 @@ for (let juicei = 0; juicei < eLists.JUICEMIXABLE.length; juicei++) {
         pixel2.color = `rgb(${parseInt(newrgb.r)},${parseInt(newrgb.g)},${parseInt(newrgb.b)})`;
     }}
 }
+
+iceelem = elem+"_ice"
+// ice slush
+elements[elem].stateLowColorMultiplier = 1.2;
+elements[elem].tempLow = 10;
+elements.fruit_slush.stateHighColorMultiplier = 0.83333333333;
+elements.fruit_slush.stateLowColorMultiplier = 1.2;
+elements.juice_ice.stateHighColorMultiplier = 0.83333333333;
+elements.juice_ice.stateHigh = "fruit_slush"
+elements.juice_ice.tempHigh = -20
+elements[iceelem].stateHigh = "fruit_slush"
+elements[iceelem].tempHigh = -20
+
 // fruit milk with milk
 elements.fruit_milk.reactions.milk = { chance:1, func: function(pixel1, pixel2){
     let newrgb = interpolateRgb(getRGB(pixel1.color), getRGB(pixel2.color), 0.2);
