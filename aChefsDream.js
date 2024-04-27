@@ -18,6 +18,37 @@ function getRGB(rgb){
     let rgb2 = rgb.replace(")", "").replace("rgb(", "").replace(/,/g, "r").split("r")
     return { r: parseInt(rgb2[0]), g: parseInt(rgb2[1]), b: parseInt(rgb2[2]) };
 }
+function findMostFrequent(arr) {
+    let freqMap = {};
+    
+    if (arr) {
+        if (arr.length === 0) {
+            return "water";
+        } else if (arr.length === 1) {
+            return arr[0]
+        } else {
+            arr.forEach(item => {
+            if(!freqMap[item]) {
+                freqMap[item] = 0;
+            }
+            freqMap[item]++;
+            });
+        
+            let max = 0;
+            let mostFrequent = [];
+        
+            for (let item in freqMap) {
+            if (freqMap[item] > max) {
+                max = freqMap[item];
+                mostFrequent = [item];
+            } else if (freqMap[item] === max) {
+                mostFrequent.push(item);
+            }
+            }
+            return mostFrequent.join(', '); 
+        }  
+    }
+}
 behaviors.STURDYPOWDER2 = [
     "XX|XX|XX",
     "XX|XX|XX",
@@ -417,6 +448,10 @@ elements.soup = {
                 if (Math.random() < 0.5) { deletePixel(ingredient.x, ingredient.y); }
                 else {
                     ingredient.color = pixelColorPick(ingredient, hex);
+                    if (!ingredient.elemlist){
+                        ingredient.elemlist = [];
+                    }
+                    ingredient.elemlist.push(soup.elemlist[Math.floor(Math.random() * soup.elemlist.length)])
                 }
             }
 		}
@@ -434,6 +469,13 @@ elements.soup = {
 		    }
 		}
 	},
+    hoverStat: function(soup, ingredient) {
+        if (findMostFrequent(soup.elemlist) == undefined) {
+            return "Ingredients:None"
+        } else {
+            return "Ingredients:"+findMostFrequent(soup.elemlist)
+        }
+    },
 }
 
 if (!elements.broth.reactions) elements.broth.reactions = {};
