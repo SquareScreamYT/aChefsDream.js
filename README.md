@@ -16,6 +16,14 @@ you can support me at my youtube: https://youtube.com/@sqec
 ## High Priority
 
 - spices
+  - star anise
+  - curry leaves
+  - laksa leaves
+  - bay leaves
+  - rosemary
+  - coriander
+  - parsley
+  - cloves
 - candied apples
 - pudding/cream
 - extract tool
