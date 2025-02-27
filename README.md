@@ -30,6 +30,7 @@ you can support me at my youtube: https://youtube.com/@sqec
 - miso
 - jackfruit
 - fruit soda (any juice + co2 or seltzer)
+- almond and almond water
 
 ## Low Priority
 
