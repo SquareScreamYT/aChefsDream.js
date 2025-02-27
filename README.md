@@ -32,7 +32,6 @@ you can support me at my youtube: https://youtube.com/@sqec
 - matcha leaves, powder, tea
 - cacao pods
 - more chocolate, cocoa powder, white chocolate, cocoa butter
-- pigs, ham and bacon
 - crabs (they eat coconuts)
 - squids
 - tofu
@@ -545,3 +544,4 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added allspice
 - added sugarcane and sugarcane plant
 - added cane sugar
+- added tea leaves
