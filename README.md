@@ -541,7 +541,9 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added pork
 - added cumin
 - added paprika
+- added saffron
 - added allspice
 - added sugarcane and sugarcane plant
 - added cane sugar
 - added tea leaves
+- fixed tempura turning into ??? when frozen
