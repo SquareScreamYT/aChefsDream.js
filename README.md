@@ -1,13 +1,14 @@
 # A Chef's Dream
 
-A Chef's Dream is a Sandboxels mod started by RealerRaddler and continued by SquareScreamYT. It adds many foods to Sandboxels. Use mod aChefsDream.js to add to your Sandboxels :D
+A Chef's Dream is a Sandboxels mod started by RealerRaddler and continued by SquareScreamYT. It adds many foods to Sandboxels. Use mod aChefsDream.js to add to your Sandboxels :D  
+There is now a sequel called aChefsDream2.js, try it out!
 
 # Credits
 
 Created by SquareScreamYT/sqec <@918475812884344852>
 Thanks to RealerRaddler <@914371295561535508>, Alice <@697799964985786450>, nousernamefound <@316383921346707468>, Adora the Transfem <@778753696804765696>, ryan(R74n) <@101070932608561152> and Fioushemastor <@738828785482203189> for helping :)
 
-# v1.13.9
+# v2.0.0
 
 you can support me at my youtube: https://youtube.com/@sqec
 
@@ -529,3 +530,18 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added rambutan juice
 - added durian juice
 - updated soup with a ingredient stat
+
+
+
+
+## v2.0.0 - A Chef's Dream 2
+
+- added cut ginger
+- added extract tool
+- added pigs and piglets
+- added pork
+- added cumin
+- added paprika
+- added allspice
+- added sugarcane and sugarcane plant
+- added cane sugar
