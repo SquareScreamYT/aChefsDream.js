@@ -8,7 +8,7 @@ There is now a sequel called aChefsDream2.js, try it out!
 Created by SquareScreamYT/sqec <@918475812884344852>
 Thanks to RealerRaddler <@914371295561535508>, Alice <@697799964985786450>, nousernamefound <@316383921346707468>, Adora the Transfem <@778753696804765696>, ryan(R74n) <@101070932608561152> and Fioushemastor <@738828785482203189> for helping :)
 
-# v2.0.0
+# v2.0.1
 
 you can support me at my youtube: https://youtube.com/@sqec
 
@@ -547,3 +547,12 @@ you can support me at my youtube: https://youtube.com/@sqec
 - added cane sugar
 - added tea leaves
 - fixed tempura turning into ??? when frozen
+
+
+
+
+## v2.0.1
+
+- added cinnamon
+- added cinnamon powder
+- added cola syrup
