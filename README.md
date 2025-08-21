@@ -3,6 +3,8 @@
 A Chef's Dream is a Sandboxels mod started by RealerRaddler and continued by SquareScreamYT. It adds many foods to Sandboxels. Use mod aChefsDream.js to add to your Sandboxels :D  
 There is now a sequel called aChefsDream2.js, try it out!
 
+This repository has been archived, however the mod is still being actively maintained on the main Sandboxels repo.
+
 # Credits
 
 Created by SquareScreamYT/sqec <@918475812884344852>
